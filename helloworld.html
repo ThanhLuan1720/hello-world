@@ -1,11 +1,61 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome to git</title>
-</head>
-<body>
-<H1>Hello</H1>
-<h2>World</h2>
+<!doctype html>
+<html ng-app="car_app">
+  <head>
+    <script src="angular/angular.min.js"></script>
+    <link rel="stylesheet"  type="text/css" href="css.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <script src="car.js"></script>
+  </head> 
+  
+    <body ng-controller="Carcontroller" class="container body">
+    <h1>WELCOME TO MY CAR STORE</h1>
+      <div class="col-md-4">
+          Search:<br> <input ng-model="Carcontroller" />
+         <p>
+             Sort by:<br>
+          <select ng-model="$ctrl.order" style="margin: 5px;">
+            <option value="name">Tên</option>
+            <option value="price" >Giá</option>
+          </select>
+        </p>
 
-</body>
+      </div> 
+      <div class="col-md-8">
+        <ul>
+          <li class="row tag-li" ng-repeat="car in cars| filter:Carcontroller| orderBy:$ctrl.order">
+            <div class="col-sm-3 hinh">
+              <p><a href=""><img src="{{car.imgurl}}"></a></p>
+            </div>
+            <div class="col-sm-9">
+               <span>{{car.name}}</span>
+              <p>{{car.price}}</p>
+              
+            </div>
+            
+
+          </li>
+        </ul>
+      </div>
+  
+     
+  </body>
+  <style type="text/css">
+    .body{
+      background: #888b92;
+      color: red;
+
+    }
+    .hinh img{
+      width: 100%;
+    }
+    ul>li{
+      list-style: none;
+    }
+    .tag-li{
+      border: blue solid 1px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 
+    }
+  </style>
 </html>
